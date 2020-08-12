@@ -24,9 +24,9 @@ const Product = ({ id, title, image, price, rating }) => {
         <p>{title}</p>
         <p className="product__price">
           <small>₹</small>
-          <strong>{price}</strong>
+          <strong>{Number(price).toLocaleString()}</strong>
         </p>
-        <div className="product__rating">
+        <div>
           {Array(rating)
             .fill()
             .map((_) => (
