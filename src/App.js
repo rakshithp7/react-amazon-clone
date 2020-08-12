@@ -1,6 +1,7 @@
 import React from "react";
 import { Router } from "@reach/router";
 import "./App.css";
+import Header from "./components/Header";
 
 const Home = () => {
   return (
@@ -12,9 +13,12 @@ const Home = () => {
 
 function App() {
   return (
-    <Router>
-      <Home path="/" />
-    </Router>
+    <div>
+      <Header />
+      <Router>
+        <Home path="/" />
+      </Router>
+    </div>
   );
 }
 
