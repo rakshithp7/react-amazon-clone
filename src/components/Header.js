@@ -3,14 +3,17 @@ import { Link } from "@reach/router";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useStateValue } from "../StateProvider";
 
 const Header = () => {
+  const [{ cart }] = useStateValue();
+
   return (
     <nav className="header">
       {/* Logo */}
       <Link to="/">
         <img
-          class="header__logo"
+          className="header__logo"
           src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt=""
         />
@@ -55,7 +58,9 @@ const Header = () => {
             <ShoppingCartIcon />
 
             {/* Number of items in the cart */}
-            <span className="header__optionLineTwo header__basketCount">0</span>
+            <span className="header__optionLineTwo header__basketCount">
+              {cart?.length}
+            </span>
           </div>
         </Link>
       </div>
