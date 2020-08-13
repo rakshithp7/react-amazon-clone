@@ -1,22 +1,5 @@
 export const initialState = {
-  cart: [
-    {
-      id: "123123",
-      title: "Apple iPhone 11 (64GB) - White",
-      price: 67300,
-      rating: 5,
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/51o5RmQtroL._SX522_.jpg",
-    },
-    {
-      id: "1231234",
-      title: "Apple iPhone 11 (64GB) - White",
-      price: 67300,
-      rating: 5,
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/51o5RmQtroL._SX522_.jpg",
-    },
-  ],
+  cart: [],
   user: null,
 };
 
@@ -25,6 +8,11 @@ export const getCartTotal = (cart) =>
 
 function reducer(state, action) {
   switch (action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user,
+      };
     case "ADD_TO_CART":
       return {
         ...state,

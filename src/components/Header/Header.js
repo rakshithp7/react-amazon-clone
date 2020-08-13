@@ -3,10 +3,17 @@ import { Link } from "@reach/router";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../../StateProvider";
+import { auth } from "../../firebase";
 
 const Header = () => {
-  const [{ cart }] = useStateValue();
+  const [{ cart, user }] = useStateValue();
+
+  const login = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
 
   return (
     <nav className="header">
@@ -28,10 +35,12 @@ const Header = () => {
       {/* 3 Links and cart*/}
       <div className="header__nav">
         {/* 1st link */}
-        <Link to="/login" className="header__link">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello User</span>
-            <span className="header__optionLineTwo">Sign in</span>
+        <Link to={!user ? "/login" : ""} className="header__link">
+          <div onClick={login} className="header__option">
+            <span className="header__optionLineOne">Hello {user?.email}</span>
+            <span className="header__optionLineTwo">
+              {user ? "Sign Out" : "Sign in"}
+            </span>
           </div>
         </Link>
 

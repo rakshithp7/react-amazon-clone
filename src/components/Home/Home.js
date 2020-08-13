@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../Header/Header";
 import "./Home.css";
-import Product from "./Product";
+import Product from "../Product/Product";
 
 const Home = () => {
   return (
@@ -18,18 +18,20 @@ const Home = () => {
       {/* Products */}
       <div className="home__row">
         <Product
-          id="123123"
+          key="1234123"
+          id="1234123"
           title="Apple iPhone 11 (64GB) - White"
           price={67300}
           rating={5}
           image="https://images-na.ssl-images-amazon.com/images/I/51o5RmQtroL._SX522_.jpg"
         />
         <Product
+          key="123123"
           id="123123"
-          title="Apple iPhone 11 (64GB) - White"
-          price={67300}
-          rating={5}
-          image="https://images-na.ssl-images-amazon.com/images/I/51o5RmQtroL._SX522_.jpg"
+          title="OnePlus 7T (Glacier Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 3800mAH Battery)"
+          price={37999}
+          rating={4}
+          image="https://images-na.ssl-images-amazon.com/images/I/71ncRs6HzyL._SX466_.jpg"
         />
       </div>
     </div>
