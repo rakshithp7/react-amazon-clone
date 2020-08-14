@@ -62,12 +62,12 @@ const Header = () => {
 
         {/* cart */}
         <Link to="/checkout" className="header__link">
-          <div className="header__optionBasket">
-            {/* Shopping basket icon */}
-            <ShoppingCartIcon />
+          <div className="header__optionCart">
+            {/* Shopping cart icon */}
+            <ShoppingCartIcon className="header__cartIcon" />
 
             {/* Number of items in the cart */}
-            <span className="header__optionLineTwo header__basketCount">
+            <span className="header__optionLineTwo header__CartCount">
               {cart?.length}
             </span>
           </div>

@@ -3,8 +3,10 @@ import "./Login.css";
 import Header from "../Header/Header";
 import { Link, navigate } from "@reach/router";
 import { auth } from "../../firebase";
+import { useStateValue } from "../../StateProvider";
 
 const Login = () => {
+  const [{ user }] = useStateValue();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -43,37 +45,45 @@ const Login = () => {
           />
         </Link>
 
-        <div className="login__container">
-          <h1>Sign In</h1>
-          <form>
-            <h5>E-mail</h5>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-            />
-            <h5>Password</h5>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              type="password"
-            />
-            <button
-              onClick={login}
-              type="submit"
-              className="login__signInButton"
-            >
-              Sign In
+        {!user ? (
+          <div className="login__container">
+            <h1>Login</h1>
+            <form>
+              <h5>Email</h5>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+              />
+              <h5>Password</h5>
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type="password"
+              />
+              <button
+                onClick={login}
+                type="submit"
+                className="login__signInButton"
+              >
+                Sign In
+              </button>
+            </form>
+            <p>
+              This is only a clone of Amazon website. Do not use any personal
+              credentials.
+            </p>
+            <button onClick={register} className="login__registerButton">
+              Create your Amazon account
             </button>
-          </form>
-          <p>
-            This is only a clone of Amazon website. Do not use any personal
-            credentials.
-          </p>
-          <button onClick={register} className="login__registerButton">
-            Create your Amazon account
-          </button>
-        </div>
+            <p>
+              If you are creating a new account, please fill in all the fields
+              and click on the above button.
+            </p>
+          </div>
+        ) : (
+          <div>Already logged in</div>
+        )}
       </div>
     </div>
   );
