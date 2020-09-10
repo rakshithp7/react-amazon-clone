@@ -1,4 +1,6 @@
 import React from "react";
+import FlipMove from "react-flip-move";
+
 import { useStateValue } from "../../StateProvider";
 import Header from "../Header/Header";
 import "./Checkout.css";
@@ -30,15 +32,19 @@ const Checkout = () => {
             <div>
               <h2 className="checkout__title">Your Shopping Cart:</h2>
 
-              {cart.map((item) => (
-                <CheckoutProduct
-                  id={item.id}
-                  title={item.title}
-                  image={item.image}
-                  price={item.price}
-                  rating={item.rating}
-                />
-              ))}
+              <FlipMove leaveAnimation="accordionVertical">
+                {cart.map((item) => (
+                  <CheckoutProduct
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    image={item.image}
+                    price={item.price}
+                    rating={item.rating}
+                    quantity={item.quantity}
+                  />
+                ))}
+              </FlipMove>
             </div>
           )}
         </div>

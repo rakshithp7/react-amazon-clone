@@ -14,6 +14,7 @@ const Product = ({ id, title, image, price, rating }) => {
         image,
         price,
         rating,
+        quantity: 1,
       },
     });
   };
@@ -29,8 +30,8 @@ const Product = ({ id, title, image, price, rating }) => {
         <div>
           {Array(rating)
             .fill()
-            .map((_) => (
-              <span role="img" aria-label="">
+            .map((_, i) => (
+              <span role="img" key={i} aria-label="">
                 ⭐
               </span>
             ))}
