@@ -58,6 +58,12 @@ function reducer(state, action) {
         cart: state.cart,
       };
 
+    case "EMPTY_CART":
+      return {
+        ...state,
+        cart: [],
+      };
+
     default:
       return state;
   }

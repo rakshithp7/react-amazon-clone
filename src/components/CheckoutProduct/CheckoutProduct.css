@@ -53,3 +53,7 @@
   color: gray;
   cursor: default !important;
 }
+
+.checkoutProduct__quantityPayment {
+  margin-right: 5px;
+}

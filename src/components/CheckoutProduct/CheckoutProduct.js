@@ -5,7 +5,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 
 const CheckoutProduct = forwardRef(
-  ({ id, title, image, price, rating, quantity }, ref) => {
+  ({ id, title, image, price, rating, quantity, payment }, ref) => {
     const [, dispatch] = useStateValue();
     const [quant, setQuant] = useState(quantity);
 
@@ -52,20 +52,29 @@ const CheckoutProduct = forwardRef(
                 </span>
               ))}
           </div>
-          <div className="checkoutProduct__quantity">
-            <p>Quantity:</p>{" "}
-            {quant === 1 ? (
-              <RemoveIcon
-                className="checkoutProduct__quantityDisabled"
-                fontSize="small"
-              />
-            ) : (
-              <RemoveIcon fontSize="small" onClick={decreaseQuantity} />
-            )}
-            {quant}
-            <AddIcon fontSize="small" onClick={increaseQuantity} />
-          </div>
-          <button onClick={removeFromCart}>Remove from cart</button>
+          {!payment ? (
+            <>
+              <div className="checkoutProduct__quantity">
+                <p>Quantity:</p>
+                {quant === 1 ? (
+                  <RemoveIcon
+                    className="checkoutProduct__quantityDisabled"
+                    fontSize="small"
+                  />
+                ) : (
+                  <RemoveIcon fontSize="small" onClick={decreaseQuantity} />
+                )}
+                {quant}
+                <AddIcon fontSize="small" onClick={increaseQuantity} />
+              </div>
+              <button onClick={removeFromCart}>Remove from cart</button>
+            </>
+          ) : (
+            <div className="checkoutProduct__quantity">
+              <p className="checkoutProduct__quantityPayment">Quantity:</p>
+              {quant}
+            </div>
+          )}
         </div>
       </div>
     );

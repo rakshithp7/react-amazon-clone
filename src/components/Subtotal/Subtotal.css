@@ -31,5 +31,6 @@
 }
 
 .subtotal > button:hover {
+  cursor: pointer;
   background: linear-gradient(to bottom, #ffcb52, #ffcd4e);
 }
